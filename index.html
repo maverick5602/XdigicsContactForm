@@ -1,0 +1,150 @@
+<!DOCTYPE html> <!-- This represents the document type i.e  HTML document-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles/style.css"> <!-- This is the link to CSS document -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Link to BOOTSTRAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
+    <title>CONTACT FORM</title>
+    <meta name="keywords" content="internship, application form, internship opportunities, professional development"/> <!-- Used for Search Engine optimization -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- used for Logo icons -->
+
+</head>
+<body style="background-color: #f0f0f0;"> <!-- Example of inline css -->
+    <div class="navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Ameya Nandedkar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="Document/Ameya_Resume_UBS (2).pdf">Resume</a> <!-- Access to Resume / CV pdf -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" target="_blank" href="Document/Ameya_CV.docx">CV</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>    
+    </div>
+
+        <div class="conversation-section">
+            <div class="container">
+                <h2 class="conversation-title" style="color: white;">LET'S HAVE A CONVERSATION !</h2>
+                <p class="conversation-content">
+                    Whether you have questions, feedback, or just want to say Hello<br>
+                    we welcome the opportunity to connect with you.
+                </p>
+            </div>      
+        </div>
+        
+<!-- CONTACT FORM -->
+
+    <div class="formContainer">
+        <div class="contactForm" onsubmit="return saveAsPDF()" >
+            <form id="form" onsubmit="return saveAsPDF()">
+                <!-- -->
+                <h2>CONTACT FORM</h2>
+                <div class="inputBox">
+                    <input id ="name"type="text" name="Name" required="required">
+                    <span>Full Name*</span>
+                </div>
+                <div class="inputBox">
+                    <input id="email" type="email" name="email" required="required" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                    <span>Email*</span>
+                </div>
+    
+                <div class="inputBox">
+                    <input id="phone" type="tel" name="phone" pattern="[+]?\d{1,4}[-.\s]?\d{1,14}" required="required" maxlength="13"> <!-- The pattern allows us to take country code as input -->
+                    <span>Phone Number* </span>
+                </div>
+                <div class="inputBox" id="inputbox">
+                    <textarea name="msg" id="" cols="5" rows="8" required="required" maxlength="500"></textarea> <!-- max length set to 500 characters as specified -->
+                    <span>Type Your Message*</span>
+                </div>
+    
+          
+                <div class="inputBox" id="sub">
+                    <input type="submit" value="Submit"> <!-- SUBMIT BUTTON-->
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer"style="background-color:#f0f0f0 ;">
+        <div class="banner">
+            <marquee><a href="https://www.digialm.com//EForms/configuredHtml/176/59300/Registration.html" 
+                style="text-decoration: underline white 1px;">
+                <p>
+                    Connect with us to Elevate your Business to New Heights !!!</p></a>
+              </marquee>
+        </div>
+        <div class="footergrid">
+            <div class="address" >
+                <h1>Company</h1>
+                <ul>
+                <li>About Us</li>
+                <li>Careers</li>
+                <li>Training Services</li>
+                <li>Events</li></ul>
+            </div>
+            <div class="address" >
+                <h1>Our Services</h1>
+                <ul>
+                <li>Front-End Development Services</li>
+                <li>UI/UX Design Services</li>
+                <li>ReactJS Development Services</li>
+                </ul>
+            </div>         
+    </div>
+    <div class="copyright">
+        <h1>© 2024 All Right Reserved. Design & Developed By <a style="color: navy;">Ameya Nandedkar</a> | MIT-ADT University </h1>
+    </div>
+
+    <!-- Adition of JS and BOOTSTRAP Rquirements -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script src="JS/script.js"> </script> <!-- Link to JS document -->
+
+    <script>
+        function saveAsPDF() {
+    // Extract form data
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+    var message = document.getElementById('inputbox').getElementsByTagName('textarea')[0].value;
+
+    // Create a new jsPDF instance
+    var pdf = new jsPDF();
+
+    // Set PDF content
+    pdf.text(20, 20, 'Contact Form Details:');
+    pdf.text(20, 30, 'Name: ' + name);
+    pdf.text(20, 40, 'Email: ' + email);
+    pdf.text(20, 50, 'Phone: ' + phone);
+    pdf.text(20, 60, 'Message: ' + message);
+
+    // Save the PDF
+    pdf.save('contact_form_details.pdf');
+
+    // Prevent the form from submitting
+    return false;
+}
+
+
+    </script>
+
+</body>
+</html>
